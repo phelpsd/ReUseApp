@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ReUseApp</string>
+
+    <string name="hello_world">Corvallis ReUse Program</string>
+    <string name="action_settings">Settings</string>
+    <string name="item_title">Items</string>
+</resources>
