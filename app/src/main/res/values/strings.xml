@@ -1,7 +1,6 @@
 <resources>
-    <string name="app_name">ReUseApp</string>
-
-    <string name="hello_world">Corvallis ReUse Program</string>
+    <string name="app_name">Corvallis Reuse and Repair Directory</string>
+    <string name="main_title">Republic Services</string>
     <string name="map_release_key">AIzaSyBzxhI8sLqDrv2j0nNl3EJ6L5hDO2QyLoQ</string>
     <string name="map_debug_key">AIzaSyDVwz3VEwHiSBh56JTDAukcPPzdjYo4R74</string>
     <string name="action_settings">Settings</string>
@@ -16,5 +15,10 @@
     <string name="ph_exp">Click on number to call</string>
     <string name="map_exp">Click on address to view business on a map</string>
     <string name="item_accept">Items Accepted</string>
+    <string name="accept_link">http://site.republicservices.com/site/corvallis-or/en/documents/corvallisrecycledepot.pdf</string>
+    <string name="pickup_link">http://site.republicservices.com/site/corvallis-or/en/documents/detailedrecyclingguide.pdf</string>
+    <string name="acc_exp">What the Republic recycling depot accepts:</string>
+    <string name="pup_exp">What Republic takes in the curbside recycling containers:</string>
     <color name="link_blue">#0645AD</color>
+
 </resources>
