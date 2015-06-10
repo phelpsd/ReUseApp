@@ -21,48 +21,68 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_marginLeft="50dp"
-                android:text="name"
+                android:layout_marginLeft="20dp"
+                android:text="@string/name_text"
                 android:id="@+id/bus_name" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="15dp"
-                android:text="website"
+                android:text="@string/web_text"
                 android:id="@+id/website" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="15dp"
-                android:text="phone"
+                android:text="@string/ph_text"
                 android:id="@+id/phone" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="35dp"
                 android:layout_marginTop="15dp"
-                android:text="address"
+                android:text="@string/add_text"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
                 android:id="@+id/address"
                 android:clickable="true"
                 android:onClick="onClick_map"
+                android:textColor="@color/link_blue"
                 android:nestedScrollingEnabled="false" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="15dp"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/map_exp"
+                android:id="@+id/map_exp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="items"
-                android:id="@+id/items" />
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/item_accept"
+                android:id="@+id/item_title" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/listView"
+                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/item_title" />
 
         </LinearLayout>
 

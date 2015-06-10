@@ -2,18 +2,21 @@ package com.example.tracy.reuse;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -57,7 +60,7 @@ public class DetailActivity extends ActionBarActivity {
         webView = (TextView) findViewById(R.id.website);
         phoneView = (TextView) findViewById(R.id.phone);
         addressView = (TextView) findViewById(R.id.address);
-        itemsView = (TextView) findViewById(R.id.items);
+        //itemsView = (TextView) findViewById(R.id.items);
 
 
         if (getIntent().hasExtra("bus_name")) {
@@ -70,6 +73,7 @@ public class DetailActivity extends ActionBarActivity {
             nameView.setText(busName);
             webView.setText(busWeb);
             phoneView.setText(busPhone);
+            addressView.setPaintFlags(addressView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             addressView.setText(busAdd);
 
             bus = new Business(busId, busName, busPhone, busWeb, busAdd);
@@ -81,7 +85,7 @@ public class DetailActivity extends ActionBarActivity {
 
     }
 
-    void getItemsByBus(Business bus) {
+    void getItemsByBus(Business bus){
         //builds a rest adapter
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setLogLevel(RestAdapter.LogLevel.FULL)
@@ -94,17 +98,12 @@ public class DetailActivity extends ActionBarActivity {
         //Category current_cat = new Category(catId, catName);
 
         //queries the API
-        rAPI.getItemsByBusiness(bus, new Callback<List<Item>>() {
+        rAPI.getItemsByBusiness(bus, new Callback<List<Item>>(){
 
             @Override
             public void success(List<Item> items, Response response) {
-                itemsView = (TextView) findViewById(R.id.items);
 
-                itemsView.setText("Items Accepted");
-                for (int i = 0; i < items.size(); i++) {
-                    itemsView.append("\n");
-                    itemsView.append(items.get(i).getName());
-                }
+                populate_list(items);
 
 
             }
@@ -116,6 +115,18 @@ public class DetailActivity extends ActionBarActivity {
 
             }
         });
+
+    }
+
+    public void populate_list(List<Item> items){
+        ListView listView = (ListView) findViewById(R.id.listView);
+        ItemAdapter servAdapt;
+
+        servAdapt = new ItemAdapter(this, 0, (ArrayList)items);
+
+        listView.setAdapter(servAdapt);
+
+        // listView.setOnItemClickListener((android.widget.AdapterView.OnItemClickListener) this);
 
     }
 

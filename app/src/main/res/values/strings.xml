@@ -2,6 +2,17 @@
     <string name="app_name">ReUseApp</string>
 
     <string name="hello_world">Corvallis ReUse Program</string>
+    <string name="map_release_key">AIzaSyBzxhI8sLqDrv2j0nNl3EJ6L5hDO2QyLoQ</string>
+    <string name="map_debug_key">AIzaSyDVwz3VEwHiSBh56JTDAukcPPzdjYo4R74</string>
     <string name="action_settings">Settings</string>
     <string name="item_title">Items</string>
+    <string name="business_title">Businesses</string>
+    <string name="name_text">name</string>
+    <string name="web_text">website</string>
+    <string name="ph_text">phone</string>
+    <string name="add_text">address</string>
+    <string name="items_text">items</string>
+    <string name="map_exp">Click on address to view business on a map</string>
+    <string name="item_accept">Items Accepted</string>
+    <color name="link_blue">#0645AD</color>
 </resources>

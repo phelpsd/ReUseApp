@@ -69,10 +69,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".DetailActivity" />
         </activity>
-
+        <!-- Debug Key -->
         <meta-data
             android:name="com.google.android.maps.v2.API_Key"
-            android:value="AIzaSyDVwz3VEwHiSBh56JTDAukcPPzdjYo4R74" />
+            android:value="@string/map_debug_key" />
+        <!-- Release Key -->
+        <!--
+        <meta-data
+            android:name="com.google.android.maps.v2.API_Key"
+            android:value="@string/map_release_key" />
+        -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
