@@ -12,6 +12,8 @@
     <string name="ph_text">phone</string>
     <string name="add_text">address</string>
     <string name="items_text">items</string>
+    <string name="web_exp">Click on url to view website</string>
+    <string name="ph_exp">Click on number to call</string>
     <string name="map_exp">Click on address to view business on a map</string>
     <string name="item_accept">Items Accepted</string>
     <color name="link_blue">#0645AD</color>

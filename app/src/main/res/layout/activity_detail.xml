@@ -32,7 +32,21 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/web_text"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:textColor="@color/link_blue"
+                android:onClick="onClick_web"
                 android:id="@+id/website" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/web_exp"
+                android:id="@+id/web_exp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,7 +55,21 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/ph_text"
+                android:textIsSelectable="true"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:textColor="@color/link_blue"
+                android:onClick="onClick_phone"
                 android:id="@+id/phone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/ph_exp"
+                android:id="@+id/ph_exp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,12 +78,12 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/add_text"
+                android:id="@+id/address"
                 android:textIsSelectable="true"
                 android:textStyle="bold"
-                android:id="@+id/address"
                 android:clickable="true"
-                android:onClick="onClick_map"
                 android:textColor="@color/link_blue"
+                android:onClick="onClick_map"
                 android:nestedScrollingEnabled="false" />
 
             <TextView

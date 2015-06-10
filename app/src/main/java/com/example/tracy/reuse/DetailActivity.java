@@ -41,6 +41,7 @@ public class DetailActivity extends ActionBarActivity {
     String busWeb;
     String busPhone;
     String busAdd;
+    String new_phone;
 
     TextView nameView;
     TextView webView;
@@ -70,9 +71,15 @@ public class DetailActivity extends ActionBarActivity {
             busPhone = this.getIntent().getExtras().getString("bus_phone");
             busAdd = this.getIntent().getExtras().getString("bus_address");
 
+            if (busPhone.length() == 10) {
+                new_phone = "(" + busPhone.substring(0,3) + ")" + busPhone.substring(3,6) + "-" + busPhone.substring(6);
+            }
+
             nameView.setText(busName);
+            webView.setPaintFlags(webView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             webView.setText(busWeb);
-            phoneView.setText(busPhone);
+            phoneView.setPaintFlags(phoneView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+            phoneView.setText(new_phone);
             addressView.setPaintFlags(addressView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             addressView.setText(busAdd);
 
@@ -130,6 +137,19 @@ public class DetailActivity extends ActionBarActivity {
 
     }
 
+    //launches browser to business website
+    public void onClick_web(View v) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(busWeb));
+        startActivity(browserIntent);
+    }
+    //launches phone dialer with business phone
+    public void onClick_phone(View v) {
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        //String tel_num = String.format(Locale.ENGLISH, "tel:%d",busPhone);
+        callIntent.setData(Uri.parse("tel:" + busPhone));
+        startActivity(callIntent);
+    }
+    //launches map with business address
     public void onClick_map(View v) {
         String modAdd = busAdd.replace(' ', '+');
         LatLng p1 = getLocationFromAddress(modAdd);
