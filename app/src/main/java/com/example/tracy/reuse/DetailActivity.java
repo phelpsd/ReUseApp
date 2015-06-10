@@ -74,6 +74,9 @@ public class DetailActivity extends ActionBarActivity {
             if (busPhone.length() == 10) {
                 new_phone = "(" + busPhone.substring(0,3) + ")" + busPhone.substring(3,6) + "-" + busPhone.substring(6);
             }
+            else {
+                new_phone = busPhone;
+            }
 
             nameView.setText(busName);
             webView.setPaintFlags(webView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -139,33 +142,61 @@ public class DetailActivity extends ActionBarActivity {
 
     //launches browser to business website
     public void onClick_web(View v) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(busWeb));
-        startActivity(browserIntent);
+        if (busWeb.equals("n/a")) {
+            Toast.makeText(this, "No website currently available", Toast.LENGTH_LONG).show();
+        }
+        else {
+            if (!busWeb.startsWith("http://") && !busWeb.startsWith("https://"))
+                busWeb = "http://" + busWeb;
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(busWeb));
+            try {
+                startActivity(browserIntent);
+            } catch (Exception e) {
+                Intent unrestrictedwebIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(busWeb));
+                startActivity(unrestrictedwebIntent);
+            }
+        }
     }
     //launches phone dialer with business phone
     public void onClick_phone(View v) {
-        Intent callIntent = new Intent(Intent.ACTION_DIAL);
-        //String tel_num = String.format(Locale.ENGLISH, "tel:%d",busPhone);
-        callIntent.setData(Uri.parse("tel:" + busPhone));
-        startActivity(callIntent);
+        if (busPhone.length() == 10) {
+            Intent callIntent = new Intent(Intent.ACTION_DIAL);
+            callIntent.setData(Uri.parse("tel:" + busPhone));
+            try {
+                startActivity(callIntent);
+            } catch (Exception e) {
+                Intent unrestrictedcallIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:" + busPhone));
+                startActivity(unrestrictedcallIntent);
+            }
+        }
+        else {
+            Toast.makeText(this, "No phone number currently available", Toast.LENGTH_LONG).show();
+        }
     }
     //launches map with business address
     public void onClick_map(View v) {
-        String modAdd = busAdd.replace(' ', '+');
-        LatLng p1 = getLocationFromAddress(modAdd);
-        double lat = p1.latitude;
-        double lng = p1.longitude;
-        String uri = String.format(Locale.ENGLISH, "https://www.google.com/maps/place/%s/@%f,%f,13z", modAdd, p1.latitude, p1.longitude);
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-        intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-        try {
-            startActivity(intent);
-        } catch (ActivityNotFoundException ex) {
+        if (busAdd.equals("n/a")) {
+            Toast.makeText(this, "No address currently available", Toast.LENGTH_LONG).show();
+
+        }
+        else {
+            String modAdd = busAdd.replace(' ', '+');
+            LatLng p1 = getLocationFromAddress(modAdd);
+            double lat = p1.latitude;
+            double lng = p1.longitude;
+            String uri = String.format(Locale.ENGLISH, "https://www.google.com/maps/place/%s/@%f,%f,13z", modAdd, p1.latitude, p1.longitude);
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
             try {
-                Intent unrestrictedIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                startActivity(unrestrictedIntent);
-            } catch (ActivityNotFoundException innerEx) {
-                Toast.makeText(this, "Please install a maps application", Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            } catch (ActivityNotFoundException ex) {
+                try {
+                    Intent unrestrictedIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    startActivity(unrestrictedIntent);
+                } catch (ActivityNotFoundException innerEx) {
+                    Toast.makeText(this, "Please install a maps application", Toast.LENGTH_LONG).show();
+                }
             }
         }
     }
